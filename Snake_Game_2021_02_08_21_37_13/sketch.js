@@ -25,7 +25,8 @@ function pickLocation() {
 }
 
 function draw() {
-  background(128,128,129);
+  background(200);
+  
   s.death();
   s.update();
   s.show();
