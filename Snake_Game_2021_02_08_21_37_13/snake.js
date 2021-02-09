@@ -1,7 +1,7 @@
 function Snake() {
   this.x = 0;
   this.y = 0;
-  this.xspeed = 1;
+  this.xspeed = 0;
   this.yspeed = 0;
   this.total = 0;
   this.tail =[];
@@ -16,7 +16,7 @@ function Snake() {
       return false;
     }
   }
-  
+
   this.dir = function(x,y) {
     this.xspeed = x;
     this.yspeed = y;
@@ -29,6 +29,8 @@ function Snake() {
       if (d < 1){
         this.total = 0;
         this.tail = [];
+        this.x = 0;
+        this.y = 0;
       }
     }
   }
@@ -49,10 +51,10 @@ function Snake() {
   }
   
   this.show = function() {
-    fill(255) 
+    fill(68,216,58) 
     for (var i = 0; i < this.tail.length; i++) {
-      rect(this.tail[i].x, this.tail[i].y, scl, scl)
+      rect(this.tail[i].x, this.tail[i].y, scl, scl,6)
     }
-    rect(this.x, this.y, scl,scl)
+    rect(this.x, this.y, scl,scl,6)
   }
 }

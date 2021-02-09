@@ -1,12 +1,20 @@
 var s;
-var scl = 20;
+var scl = 30;
 var food;
 
 function setup() {
-  createCanvas(600, 600);
+  //var cnv = createCanvas((parseInt(windowWidth/scl))*scl, (parseInt(windowHeight/scl))*scl); - this is full screen
+  cnv = createCanvas(600,600)
+  cnv.style('display', 'block');
   s = new Snake();
-  frameRate(10);
+  frameRate(12);
   pickLocation();
+}
+
+function windowResized() {
+  //resizeCanvas((parseInt(windowWidth/scl))*scl, (parseInt(windowHeight/scl))*scl);
+  resizeCanvas(600,600)
+  pickLocation()
 }
 
 function pickLocation() {
@@ -17,29 +25,37 @@ function pickLocation() {
 }
 
 function draw() {
-  background(200,200,200);
+  background(128,128,129);
   s.death();
   s.update();
   s.show();
-  
+
   if (s.eat(food)) {
     pickLocation();
   }   
   
   fill(255,0,100);
-  rect(food.x, food.y, scl, scl)
+  rect(food.x, food.y, scl, scl,7)
 } 
 
 function keyPressed() {
   if (keyCode === UP_ARROW) {
-    s.dir(0,-1);
+    s.dir(0,-1); 
   } else if (keyCode === DOWN_ARROW){
     s.dir(0,1)
   } else if (keyCode === RIGHT_ARROW){
     s.dir(1,0 )
   } else if (keyCode === LEFT_ARROW){
     s.dir(-1,0)
-  }
+  } else if (keyCode === 87) {
+    s.dir(0,-1);
+  } else if (keyCode === 83){
+    s.dir(0,1)
+  } else if (keyCode === 68){
+    s.dir(1,0 )
+  } else if (keyCode === 65){
+    s.dir(-1,0)
+  } 
 }
 
 
